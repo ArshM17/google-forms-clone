@@ -6,6 +6,7 @@ import "../Styles/RecentFormList.css";
 import blankImage from "../Images/blank.png";
 import partyImage from "../Images/party.png";
 
+//get user forms from data base
 const forms = [
   {
     img: blankImage,
@@ -53,7 +54,7 @@ function RecentFormsList() {
   return (
     <div className="form-list">
       {forms.map((form, index) => (
-        <Form key={index} img={form.img} formTitle={form.text} />
+        <Form key={index} img={form.img} formTitle={form.text} id={form.id} />
       ))}
     </div>
   );

@@ -2,10 +2,16 @@ import React from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import "../Styles/Form.css";
 import { IconButton } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-function Form({ img, formTitle }) {
+function Form({ img, formTitle, id }) {
+  let nav = useNavigate();
+  function openForm() {
+    nav(`/form/${id}`);
+  }
+
   return (
-    <div className="form-card">
+    <div className="form-card" onClick={openForm}>
       <img src={img} alt={formTitle} className="form-image" />
       <div className="form-info">
         <span className="form-text">{formTitle}</span>

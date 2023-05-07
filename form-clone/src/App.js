@@ -1,13 +1,14 @@
-import Header from "./Components/Header";
-import MainBody from "./Components/MainBody";
-import Templates from "./Components/Templates";
+import FormHeader from "./Components/FormHeader";
+import HomePage from "./Components/HomePage";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Header />
-      <Templates />
-      <MainBody />
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+        <Route path="/form/:id" element={<FormHeader />}></Route>
+      </Routes>
     </>
   );
 }
