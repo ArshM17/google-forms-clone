@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "./Form";
 
 import "../Styles/RecentFormList.css";
@@ -7,7 +7,7 @@ import blankImage from "../Images/blank.png";
 import partyImage from "../Images/party.png";
 
 //get user forms from data base
-const forms = [
+const formList = [
   {
     img: blankImage,
     text: "Blank",
@@ -51,6 +51,8 @@ const forms = [
 ];
 
 function RecentFormsList() {
+  const [forms, setForms] = useState(formList);
+
   return (
     <div className="form-list">
       {forms.map((form, index) => (
