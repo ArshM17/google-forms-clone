@@ -1,6 +1,8 @@
 import { Paper, Tab, Tabs } from "@material-ui/core";
 import React from "react";
 import { makeStyles } from "@material-ui/core";
+import QuestionList from "./QuestionList";
+import "../Styles/FormBody.css";
 
 const styles = makeStyles({
   root: {
@@ -22,12 +24,17 @@ function FormBody({ fields }) {
   const classes = styles();
   return (
     <>
-      <Paper className={classes.root}>
-        <Tabs centered className={classes.tabs}>
-          <Tab className={classes.tab} label="Questions"></Tab>
-          <Tab className={classes.tab} label="Responses"></Tab>
-        </Tabs>
-      </Paper>
+      <div className="formBodyWrapper">
+        <Paper className={classes.root}>
+          <Tabs centered className={classes.tabs}>
+            <Tab className={classes.tab} label="Questions"></Tab>
+            <Tab className={classes.tab} label="Responses"></Tab>
+          </Tabs>
+        </Paper>
+        <div className="panel-container">
+          <QuestionList />
+        </div>
+      </div>
     </>
   );
 }
