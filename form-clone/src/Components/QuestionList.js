@@ -23,12 +23,17 @@ const QuestionList = () => {
       {questionBlocks.map((questionBlock, index) => (
         <div key={index} className="questionWrapper">
           <QuestionBlock />
-          <button onClick={() => handleDeleteQuestion(index)}>
+          <button
+            className="deleteBtn"
+            onClick={() => handleDeleteQuestion(index)}
+          >
             Delete Question
           </button>
         </div>
       ))}
-      <button onClick={handleAddQuestion}>Add Question</button>
+      <button className="addBtn" onClick={handleAddQuestion}>
+        Add Question
+      </button>
     </div>
   );
 };

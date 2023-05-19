@@ -56,7 +56,9 @@ const QuestionBlock = () => {
         ))}
       </ul>
 
-      <button onClick={handleAddOption}>Add Option</button>
+      <button className="addBtn" onClick={handleAddOption}>
+        Add Option
+      </button>
     </div>
   );
 };
