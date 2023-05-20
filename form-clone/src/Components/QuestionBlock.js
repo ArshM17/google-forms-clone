@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Styles/QuestionBlock.css";
 
-const QuestionBlock = () => {
-  const [question, setQuestion] = useState("");
-  const [options, setOptions] = useState([]);
+const QuestionBlock = ({ ques }) => {
+  const [question, setQuestion] = useState(ques.question);
+  const [options, setOptions] = useState([...ques.options]);
 
   const handleQuestionChange = (e) => {
     setQuestion(e.target.value);

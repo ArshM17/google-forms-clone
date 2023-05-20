@@ -32,7 +32,8 @@ function FormBody({ fields }) {
           </Tabs>
         </Paper>
         <div className="panel-container">
-          <QuestionList />
+          <QuestionList fields={fields} />
+          {/* <h1>{fields[2].question}</h1> */}
         </div>
       </div>
     </>

@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import QuestionBlock from "../Components/QuestionBlock";
 import "../Styles/QuestionList.css";
 
-const QuestionList = () => {
-  const [questionBlocks, setQuestionBlocks] = useState([]);
+const QuestionList = ({ fields }) => {
+  const [questionBlocks, setQuestionBlocks] = useState([...fields]);
 
   const handleAddQuestion = () => {
-    setQuestionBlocks([
-      ...questionBlocks,
-      <QuestionBlock key={questionBlocks.length} />,
-    ]);
+    setQuestionBlocks([...questionBlocks, { question: "", options: [] }]);
   };
 
   const handleDeleteQuestion = (index) => {
@@ -18,11 +15,14 @@ const QuestionList = () => {
     setQuestionBlocks(updatedQuestionBlocks);
   };
 
+  console.log(`asdlkfj:${questionBlocks}`);
+
   return (
     <div className="questionList">
       {questionBlocks.map((questionBlock, index) => (
         <div key={index} className="questionWrapper">
-          <QuestionBlock />
+          {/* <h1>{questionBlock[index].question}</h1> */}
+          <QuestionBlock ques={questionBlocks[index]} />
           <button
             className="deleteBtn"
             onClick={() => handleDeleteQuestion(index)}

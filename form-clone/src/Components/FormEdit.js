@@ -8,10 +8,12 @@ function FormEdit() {
   //get the form from database using id
 
   const form = {
-    title: "Untitled Form",
+    title: "Untitled",
     fields: [
       { question: "Question1?", options: ["A", "B", "C", "D"] },
       { question: "Question2?", options: ["A", "B", "C", "D"] },
+      { question: "Question3?", options: ["A", "B", "C", "D"] },
+      // { question: "Question4?", options: ["A", "B", "C", "D"] },
     ],
   };
 

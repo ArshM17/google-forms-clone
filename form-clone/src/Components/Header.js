@@ -22,7 +22,9 @@ function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <DescriptionIcon style={{ height: "50px", width: "50px" }} />
+          <a href="/">
+            <DescriptionIcon style={{ height: "50px", width: "50px" }} />
+          </a>
           <div className="title">Forms</div>
         </div>
         <div className="search">
