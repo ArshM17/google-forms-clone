@@ -1,34 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import QuestionBlock from "../Components/QuestionBlock";
 import "../Styles/QuestionList.css";
 
-const QuestionList = ({ fields }) => {
-  const [questionBlocks, setQuestionBlocks] = useState([...fields]);
-
-  const handleAddQuestion = () => {
-    setQuestionBlocks([...questionBlocks, { question: "", options: [] }]);
-  };
-
-  const handleDeleteQuestion = (index) => {
-    const updatedQuestionBlocks = [...questionBlocks];
-    updatedQuestionBlocks.splice(index, 1);
-    setQuestionBlocks(updatedQuestionBlocks);
-  };
-
-  console.log(`asdlkfj:${questionBlocks}`);
-
+const QuestionList = ({ fields, handleAddQuestion, handleDeleteQuestion }) => {
+  // console.log(fields);
   return (
     <div className="questionList">
-      {questionBlocks.map((questionBlock, index) => (
+      {fields.map((questionBlock, index) => (
         <div key={index} className="questionWrapper">
-          {/* <h1>{questionBlock[index].question}</h1> */}
-          <QuestionBlock ques={questionBlocks[index]} />
-          <button
-            className="deleteBtn"
-            onClick={() => handleDeleteQuestion(index)}
-          >
-            Delete Question
-          </button>
+          {/* {console.log(questionBlock)} */}
+          <QuestionBlock
+            ques={questionBlock}
+            handleDeleteQuestion={handleDeleteQuestion}
+          />
         </div>
       ))}
       <button className="addBtn" onClick={handleAddQuestion}>

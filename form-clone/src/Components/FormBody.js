@@ -3,6 +3,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import QuestionList from "./QuestionList";
 import "../Styles/FormBody.css";
+import { useState } from "react";
 
 const styles = makeStyles({
   root: {
@@ -22,6 +23,24 @@ const styles = makeStyles({
 
 function FormBody({ fields }) {
   const classes = styles();
+
+  const [questionBlocks, setQuestionBlocks] = useState([...fields]);
+
+  const handleAddQuestion = () => {
+    setQuestionBlocks((prev) => [...prev, { question: "", options: [] }]);
+  };
+
+  // const handleAddQuestion = () => {
+  //   const updatedQuestionBlocks = [...questionBlocks];
+  //   updatedQuestionBlocks.splice(0, 0, { question: "", options: [] });
+  //   setQuestionBlocks(updatedQuestionBlocks);
+  // };
+
+  const handleDeleteQuestion = (index) => {
+    const updatedQuestionBlocks = [...questionBlocks];
+    updatedQuestionBlocks.splice(index, 1);
+    setQuestionBlocks(updatedQuestionBlocks);
+  };
   return (
     <>
       <div className="formBodyWrapper">
@@ -32,8 +51,11 @@ function FormBody({ fields }) {
           </Tabs>
         </Paper>
         <div className="panel-container">
-          <QuestionList fields={fields} />
-          {/* <h1>{fields[2].question}</h1> */}
+          <QuestionList
+            fields={questionBlocks}
+            handleAddQuestion={handleAddQuestion}
+            handleDeleteQuestion={handleDeleteQuestion}
+          />
         </div>
       </div>
     </>

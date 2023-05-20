@@ -10,10 +10,10 @@ function FormEdit() {
   const form = {
     title: "Untitled",
     fields: [
-      { question: "Question1?", options: ["A", "B", "C", "D"] },
-      { question: "Question2?", options: ["A", "B", "C", "D"] },
-      { question: "Question3?", options: ["A", "B", "C", "D"] },
-      // { question: "Question4?", options: ["A", "B", "C", "D"] },
+      { question: "Question1?", options: ["A", "B", "Q", "D", "R"] },
+      { question: "Question2?", options: ["A", "B", "P", "D"] },
+      { question: "Question3?", options: ["A", "F", "C"] },
+      { question: "Question4?", options: ["A", "D"] },
     ],
   };
 
