@@ -54,7 +54,7 @@ const QuestionBlock = ({ ques, handleDeleteQuestion }) => {
             <button onClick={() => handleRemoveOption(index)}>x</button>
           </li>
         ))}
-        {/* <button onClick={handleDeleteQuestion}>Delete Question</button> */}
+        <button onClick={handleDeleteQuestion}>Delete Question</button>
       </ul>
 
       <button className="addBtn" onClick={handleAddOption}>
