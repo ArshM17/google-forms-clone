@@ -10,6 +10,7 @@ const QuestionList = ({ fields, handleAddQuestion, handleDeleteQuestion }) => {
           <QuestionBlock
             ques={questionBlock}
             handleDeleteQuestion={handleDeleteQuestion}
+            ind={index}
           />
         </div>
       ))}
