@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Styles/QuestionBlock.css";
 
-const QuestionBlock = ({ ques, handleDeleteQuestion, ind }) => {
+const QuestionBlock = ({ ques }) => {
   const [question, setQuestion] = useState(ques.question);
   const [options, setOptions] = useState([...ques.options]);
 
@@ -54,9 +54,7 @@ const QuestionBlock = ({ ques, handleDeleteQuestion, ind }) => {
             <button onClick={() => handleRemoveOption(index)}>x</button>
           </li>
         ))}
-        <button onClick={() => handleDeleteQuestion(ind)}>
-          Delete Question
-        </button>
+        {/* <button onClick={() => handleDeleteQuestion(i)}>Delete Question</button> */}
       </ul>
 
       <button className="addBtn" onClick={handleAddOption}>

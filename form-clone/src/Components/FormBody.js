@@ -26,22 +26,22 @@ const styles = makeStyles({
 function FormBody({ fields, response }) {
   const classes = styles();
 
-  const [questionBlocks, setQuestionBlocks] = useState(fields);
+  // const [questionBlocks, setQuestionBlocks] = useState(fields);
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const handleAddQuestion = () => {
-    setQuestionBlocks((prev) => [...prev, { question: "", options: [] }]);
-  };
+  // const handleAddQuestion = () => {
+  //   setQuestionBlocks((prev) => [...prev, { question: "", options: [] }]);
+  // };
 
-  const handleDeleteQuestion = (index) => {
-    const updatedQuestionBlocks = [...questionBlocks];
-    updatedQuestionBlocks.splice(index, 1);
-    setQuestionBlocks(updatedQuestionBlocks);
-  };
+  // const handleDeleteQuestion = (index) => {
+  //   const updatedQuestionBlocks = [...questionBlocks];
+  //   updatedQuestionBlocks.splice(index, 1);
+  //   setQuestionBlocks(updatedQuestionBlocks);
+  // };
   return (
     <>
       <div className="formBodyWrapper">
@@ -60,9 +60,9 @@ function FormBody({ fields, response }) {
           <div>
             <TabPanel value={value} index={0}>
               <QuestionList
-                fields={questionBlocks}
-                handleAddQuestion={handleAddQuestion}
-                handleDeleteQuestion={handleDeleteQuestion}
+                fields={fields}
+                // handleAddQuestion={handleAddQuestion}
+                // handleDeleteQuestion={handleDeleteQuestion}
               />
             </TabPanel>
             <TabPanel value={value} index={1}>
