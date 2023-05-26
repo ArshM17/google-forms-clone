@@ -17,14 +17,20 @@ const QuestionBlock = ({ ques }) => {
 
   const handleAddOption = () => {
     setOptions([...options, ""]);
-  };
+  }; 
+
+ const handleDeleteQuestion = () =>{
+  setQuestion("") ;
+  setOptions([]) ; 
+
+
+ }
 
   const handleRemoveOption = (index) => {
     const updatedOptions = [...options];
     updatedOptions.splice(index, 1);
     setOptions(updatedOptions);
-  };
-
+  }; 
   return (
     <div className="question-block">
       <input
@@ -54,7 +60,7 @@ const QuestionBlock = ({ ques }) => {
             <button onClick={() => handleRemoveOption(index)}>x</button>
           </li>
         ))}
-        {/* <button onClick={() => handleDeleteQuestion(i)}>Delete Question</button> */}
+        { <button  onClick={handleDeleteQuestion}>Clear Question</button> }
       </ul>
 
       <button className="addBtn" onClick={handleAddOption}>

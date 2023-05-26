@@ -8,9 +8,30 @@ function FormEdit() {
 
   //get the form from database using id
 
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    title: "Untitled" , 
+    fields :[ 
+      {question:"Question1?" , options :["A","B","C","D"]} ,
+    ] ,
+    count : 0 ,
+    response :[[]] 
+  });  
 
   useEffect(() => {
+    return () =>{
+      const title = form.title ;
+      const fields = form.fields ;
+      setForm(title, fields) ; 
+    }
+  } 
+  ) 
+  //  const [title , setTitle] = useState('') ;
+  //  const [fields , setFields] = useState([]) ;
+
+  //  const handleSubmit = () =>{
+  //   console.log('Title' ,title) ;
+  //   console.log('Fields',fields) ;
+  //  }
     // const temp = {
     //   title: "Untitled",
     //   fields: [
@@ -30,22 +51,25 @@ function FormEdit() {
     //   },
     // };
     // setForm(temp);
-    fetch("http://localhost:5000/form")
-      .then((response) => response.json())
-      .then((data) => {
-        setForm(data);
-      });
-  }, []);
+  //   fetch("http://localhost:5000/form")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setForm(data);
+  //     });
+  // }, []);
 
   return (
     <>
-      <FormHeader form_title={form.title} />
+      <FormHeader form_title={form.title} form_fields={form.fields} />
       <h1>{id}</h1>
       {form.fields ? (
-        <FormBody fields={form.fields} response={form.response} />
+        <FormBody fields={form.fields}  response={form.response} 
+        count = {form.count}
+        />
       ) : null}
     </>
   );
+
 }
 
-export default FormEdit;
+export default FormEdit ;

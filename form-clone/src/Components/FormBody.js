@@ -23,7 +23,7 @@ const styles = makeStyles({
   },
 });
 
-function FormBody({ fields, response }) {
+function FormBody({ fields , response , count}) {
   const classes = styles();
 
   // const [questionBlocks, setQuestionBlocks] = useState(fields);
@@ -66,7 +66,7 @@ function FormBody({ fields, response }) {
               />
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <ResponseTab response={response} />
+              { <ResponseTab response={response} count={count} /> }
             </TabPanel>
           </div>
         </div>

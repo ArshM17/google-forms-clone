@@ -12,31 +12,37 @@ const QuestionList = ({ fields }) => {
     ]);
   };
 
-  const handleDeleteQuestion = (index) => {
-    const updatedQuestionBlocks = [...questionBlocks];
-    updatedQuestionBlocks.splice(index, 1);
-    setQuestionBlocks(updatedQuestionBlocks);
-    // console.log(updatedQuestionBlocks);
-  };
+//  const handleDeleteQuestion = (e) => {
+//     const updatedQuestionBlocks = [...questionBlocks];
+//     updatedQuestionBlocks.splice(e.target.id, 1);
+//     setQuestionBlocks(updatedQuestionBlocks);
+//     // console.log(updatedQuestionBlocks);
+//   };
 
   useEffect(() => {
-    console.log(questionBlocks);
+    // console.log(questionBlocks);
   }, [questionBlocks]);
 
   return (
     <div className="questionList">
       {questionBlocks.map((questionBlock, index) => (
-        <div key={index} className="questionWrapper">
+        <div key={index} id ={index} className="questionWrapper">
           <QuestionBlock
             key={index}
-            i={questionBlock.id}
             ques={questionBlock}
-          />
+          />  
+
+          {/* <button onClick={handleDeleteQuestion}>Delete Question</button> */}
+        
         </div>
       ))}
+         {/* <button className="deletBtn"   onClick={handleDeleteQuestion}>
+          Delete Question
+          </button>  */}
       <button className="addBtn" onClick={handleAddQuestion}>
         Add Question
-      </button>
+      </button> 
+      
     </div>
   );
 };
