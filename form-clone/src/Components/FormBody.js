@@ -6,6 +6,7 @@ import "../Styles/FormBody.css";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import ResponseTab from "../Components/ResponseTab";
+import Responses from "../Components/Responses";
 
 const styles = makeStyles({
   root: {
@@ -23,7 +24,7 @@ const styles = makeStyles({
   },
 });
 
-function FormBody({ fields , response , count}) {
+function FormBody({ fields, response, count }) {
   const classes = styles();
 
   // const [questionBlocks, setQuestionBlocks] = useState(fields);
@@ -66,7 +67,7 @@ function FormBody({ fields , response , count}) {
               />
             </TabPanel>
             <TabPanel value={value} index={1}>
-              { <ResponseTab response={response} count={count} /> }
+              <Responses />
             </TabPanel>
           </div>
         </div>

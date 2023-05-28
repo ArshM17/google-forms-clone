@@ -8,7 +8,7 @@ function Template({ img, text }) {
 
   function createForm() {
     const id = uuidv4();
-    navigate(`/form/${id}`);
+    navigate(`/form/edit/${id}`);
   }
 
   return (

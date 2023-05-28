@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function Form({ img, formTitle, id }) {
   let nav = useNavigate();
   function openForm() {
-    nav(`/form/${id}`);
+    nav(`/form/edit/${id}`);
   }
 
   return (
