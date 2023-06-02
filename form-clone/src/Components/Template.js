@@ -13,9 +13,9 @@ function Template({ img, text }) {
 
   return (
     <div className="template-card" onClick={createForm}>
-      <img src={img} alt={text} className="template-image" />
+      <img src={img} alt={text} clssName="template-image" />
       <div className="template-text">{text}</div>
-    </div>
+    </div> 
   );
 }
 

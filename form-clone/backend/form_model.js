@@ -1,28 +1,28 @@
+// Tera kuch kaam hoga toh batata abhi keliye theher jao 
 const mongoose = require('mongoose') ;
 
-const Schema = mongoose.Schema ; 
+const Schema = mongoose.Schema ;  
+// const questionSchema = new Schema({
+//   question: {
+//     type: String,
+//     required: true
+//   },
+//   options: {
+//     type: [String],
+//     required: true
+//   }
+// });
 
 const formSchema = new Schema({
-    title: {
-        type : String ,
-        required : true ,
-        unique : true ,
-        trim : true ,
-        minLength:3 ,
-
-    },
-    // fields: [
-    //     { question: "Question1?", options: ["A", "B", "Q", "D", "R"], id: 0 },
-    //     { question: "Question2?", options: ["A", "B", "P", "D"], id: 1 },
-    //     { question: "Question3?", options: ["A", "F", "C"], id: 2 },
-    //     { question: "Question4?", options: ["A", "D"], id: 3 },
-    //   ], 
-
-    fields :{
-        type : Array ,
-        required : true ,
-
-    } ,
+    title :{
+      type : String ,
+      required : true , 
+    }  , 
+    id:{
+      type : String, 
+      unique: true,
+    }
+  }) 
 //       response: {
 //         count: 0,
 //         responses: [
@@ -32,17 +32,17 @@ const formSchema = new Schema({
 //           [1, 6],
 //         ],
 // } 
-    count :{
-      type: Number,
-      default: 0,
-    } ,
+  //   count :{
+  //     type: Number,
+  //     default: 0,
+  //   } ,
 
-    responses :{ 
-      type: [[Number]], // Array of arrays of numbers
-      default: [], 
-    } 
-   }
-) 
+  //   responses :{ 
+  //     type: [[Number]], // Array of arrays of numbers
+  //     default: [], 
+  //   } 
+  //  }
+
 
 const Form = mongoose.model('Form' , formSchema) ; 
 module.exports = Form ;  

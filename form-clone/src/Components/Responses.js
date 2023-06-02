@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const ResponsesDisplayComponent = () => {
-  const responses = [
+  const resp = [
     {
       "Question 1": "Option A",
       "Question 2": "Option C",
@@ -17,26 +20,45 @@ const ResponsesDisplayComponent = () => {
       "Question 2": "Option B",
       "Question 3": "Option A",
     },
-  ];
+  ]; 
 
-  return (
+  const [responses , setResponses] = useState(null) ;
+  const {id , title} = useParams() ; 
+  useEffect(() => {
+    axios.get(`http://localhost:5000/response/${id}/${title}`)
+    .then(res => {
+      console.log(res.data) ; 
+      setResponses(res.data) ; 
+    })
+  },[]) 
+
+
+
+  return responses && responses.length > 0 ?(
     <div>
-      <h1>All Responses</h1>
-      {responses.map((response, index) => (
+      if(! {responses}){
+        <h6>You haven't responded ! </h6>
+       }
+      <h1>All Responses</h1> 
+      {responses.map((item, index) => (
+        item ? (
+
         <div key={index}>
           <h3>Response {index + 1}</h3>
-          {Object.entries(response).map(([question, option]) => (
+
+          {Object.entries(item.response).map(([question, option]) => (
             <div key={question}>
               <p>
                 {question}:{option}
               </p>
             </div>
-          ))}
+          ))} 
           <hr />
         </div>
-      ))}
+        ):null 
+      ))} 
     </div>
-  );
+  ) : null ;  
 };
 
 export default ResponsesDisplayComponent;

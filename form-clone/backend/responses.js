@@ -1,20 +1,18 @@
 const express = require('express') ;
 const router = express.Router() ;
-let Response = require('./form_model') ;
+let Response = require('./responsechild') ;
 
-router.route('/').get((req , res) =>{
-    Response.find() 
+router.route('/:id/:title').get((req , res) =>{
+    Response.find({title :req.params.title}) 
     .then(responses => res.json(responses)) 
     .catch(err => res.status(400).json('Error '+ err)) ;
 }) 
 
-router.route('/send').post((req , res) =>{
-    const title = req.body.title ;
-    const fields = req.body.fields ;
-    const count = req.body.count ; 
-    const responses = req.body.responses ; 
+router.route('/:title/submit').post((req , res) =>{
+    const title = req.body.title ; 
+    const response = req.body.response ; 
 
-    const newResponse = new Response({title , fields , count , responses}) ; 
+    const newResponse = new Response({title , response}) ; 
 
     newResponse.save()
     .then(() => res.json('Response saved')) 

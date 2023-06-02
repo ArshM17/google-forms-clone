@@ -19,12 +19,16 @@ const connection = mongoose.connection ;
 connection.once('open' , () => { // once the connection is established this will be logged 
     console.log("MongoDB database connection established succesfully ") ;
 })
-const responseRouter = require('./responses') ; 
+ const responseRouter = require('./responses') ; 
 
-const questionRouter = require('./questions') ;
+const questionRouter = require('./questions') ; 
+
+const formRouter = require('./forms') ; 
 
 app.use('/response', responseRouter) ;  
-app.use('/questions',questionRouter) ;
+app.use('/questions',questionRouter) ; 
+app.use('/forms',formRouter) ; 
+
 
 
 app.listen(port , () =>{

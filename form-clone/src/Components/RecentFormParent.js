@@ -24,7 +24,7 @@ const styles = makeStyles({
   },
 });
 
-const ParentComponent = () => {
+const RecentFormParentComponent = () => {
   const classes = styles();
 
   const [value, setValue] = useState(0);
@@ -32,14 +32,21 @@ const ParentComponent = () => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
+  }; 
 
-  const {id} = useParams();
+  const {id , title} = useParams() ; 
 
   useEffect(() => {
-    //  fetchData();
-    setFormData({_id:id , title: "", questions: [{ question: "", options: [] }] });
-  }, [value]);
+    console.log(title) ; 
+    axios.get(`http://localhost:5000/questions/${id}/${title}`)
+    .then(res => {
+        console.log(res.data) ; 
+
+        setFormData(res.data[0]) ;
+        
+
+    })
+  },[value]) ; 
 
   // const fetchData = async () => {
   //   try {
@@ -54,41 +61,39 @@ const ParentComponent = () => {
   //   }
   // };
 
-  const title = useRef();
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault() ;
+//   const handleFormSubmit = (e) => {
+//     e.preventDefault() ;
     
-    // Filter out questions with no question text and blank options
-    const filteredQuestions = formData.filter((question) => {
-      const hasQuestionText = question.question.trim() !== "";
-      const hasOptions =
-        question.options.length > 0 &&
-        question.options.every((option) => option.trim() !== "");
-      return hasQuestionText && hasOptions;
-    });
-    const form = {
-      //  _id:id ,  
-      title: title.current.value,
-      questions: filteredQuestions,
-    };  
+//     // Filter out questions with no question text and blank options
+//     const filteredQuestions = formData.filter((question) => {
+//       const hasQuestionText = question.question.trim() !== "";
+//       const hasOptions =
+//         question.options.length > 0 &&
+//         question.options.every((option) => option.trim() !== "");
+//       return hasQuestionText && hasOptions;
+//     });
+//     const form = {
+//       //  _id:id ,  
+//       title: title.current.value,
+//       questions: filteredQuestions,
+//     };  
 
-    const main ={
-      title:title.current.value ,
-      id:id 
-    } ; 
+//     const main ={
+//       title:title.current.value ,
+//       id:id 
+//     } ; 
     // console.log(form) ; 
 
-    if (form.title === "") form.title = "Untitled Form";
-    // Send filteredQuestions to the backend
-    const formURL = `http://localhost:3000/form/response/${id}/${form.title}`;
-    alert(`Link to answer : ${formURL}`);
-    axios.post(`http://localhost:5000/questions/${id}/${form.title}/add`,form)
-    .then(res => console.log(res.data)) ;
-    console.log(id) ; 
-    axios.post(`http://localhost:5000/forms/${id}/${main.title}/add`,form)
-    .then(res => console.log(res.data)) ; 
-  };
+//     if (form.title === "") form.title = "Untitled Form";
+//     // Send filteredQuestions to the backend
+//     const formURL = `http://localhost:3000/form/response/${id}/${form.title}`;
+//     alert(`Link to answer : ${formURL}`);
+//     axios.post(`http://localhost:5000/questions/${id}/${form.title}/add`,form)
+//     .then(res => console.log(res.data)) ;
+
+//     axios.post(`http://localhost:5000/forms/${id}/${main.title}/add`,form)
+//     .then(res => console.log(res.data)) ; 
+//   };
 
   if (!formData) {
     return <h6>Loading...</h6>;
@@ -100,9 +105,8 @@ const ParentComponent = () => {
         type="text"
         value={formData.title}
         placeholder="Form Title"
-        ref={title}
       />
-      <button onClick={handleFormSubmit}>Submit Form</button>
+      {/* <button onClick={handleFormSubmit}>Submit Form</button> */}
 
       <div>
         <Paper className={classes.root}>
@@ -125,7 +129,7 @@ const ParentComponent = () => {
               />
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <ResponsesDisplayComponent />
+              <ResponsesDisplayComponent/>
             </TabPanel>
           </div>
         </div>
@@ -134,7 +138,7 @@ const ParentComponent = () => {
   ) : null;
 };
 
-export default ParentComponent;
+export default RecentFormParentComponent;
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
