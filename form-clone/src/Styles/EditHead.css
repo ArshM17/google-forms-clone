@@ -1,0 +1,20 @@
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em;
+  }
+
+  .form-container input {
+    flex: 0.2;
+    margin-right: 10px;
+    padding: 5px;
+    outline: none;
+  }
+
+  .form-container button{
+    flex: 0.05;
+    background-color: blueviolet;
+    border-radius: 5px;
+    color: white;
+  }
+

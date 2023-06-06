@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../Styles/Child.css";
 
 const ChildComponent = ({ formQuestions, setFormData }) => {
   const [questions, setQuestions] = useState(formQuestions);
@@ -58,9 +59,50 @@ const ChildComponent = ({ formQuestions, setFormData }) => {
   }, [questions, setFormData]);
 
   return (
-    <div>
+    // <div>
+    //   {questions.map((question, questionIndex) => (
+    //     <div key={questionIndex}>
+    //       <input
+    //         type="text"
+    //         value={question.question}
+    //         onChange={(e) => handleQuestionChange(questionIndex, e)}
+    //         placeholder="Question"
+    //       />
+
+    //       {question.options.map((option, optionIndex) => (
+    //         <div key={optionIndex}>
+    //           <input type="radio" />
+    //           <input
+    //             type="text"
+    //             value={option}
+    //             onChange={(e) =>
+    //               handleOptionChange(questionIndex, optionIndex, e)
+    //             }
+    //             placeholder="Option"
+    //           />
+    //           <button
+    //             onClick={() => handleRemoveOption(questionIndex, optionIndex)}
+    //           >
+    //             Remove Option
+    //           </button>
+    //         </div>
+    //       ))}
+
+    //       <button onClick={() => handleAddOption(questionIndex)}>
+    //         Add Option
+    //       </button>
+
+    //       <button onClick={() => handleRemoveQuestion(questionIndex)}>
+    //         Remove Question
+    //       </button>
+    //     </div>
+    //   ))}
+
+    //   <button onClick={handleAddQuestion}>Add Question</button>
+    // </div>
+    <div class="form-container-child">
       {questions.map((question, questionIndex) => (
-        <div key={questionIndex}>
+        <div class="question-container" key={questionIndex}>
           <input
             type="text"
             value={question.question}
@@ -69,7 +111,7 @@ const ChildComponent = ({ formQuestions, setFormData }) => {
           />
 
           {question.options.map((option, optionIndex) => (
-            <div key={optionIndex}>
+            <div class="option-container" key={optionIndex}>
               <input type="radio" />
               <input
                 type="text"
@@ -87,17 +129,21 @@ const ChildComponent = ({ formQuestions, setFormData }) => {
             </div>
           ))}
 
-          <button onClick={() => handleAddOption(questionIndex)}>
-            Add Option
-          </button>
+          <div class="button-container">
+            <button onClick={() => handleAddOption(questionIndex)}>
+              Add Option
+            </button>
 
-          <button onClick={() => handleRemoveQuestion(questionIndex)}>
-            Remove Question
-          </button>
+            <button onClick={() => handleRemoveQuestion(questionIndex)}>
+              Remove Question
+            </button>
+          </div>
         </div>
       ))}
 
-      <button onClick={handleAddQuestion}>Add Question</button>
+      <button className="add-q" onClick={handleAddQuestion}>
+        Add Question
+      </button>
     </div>
   );
 };

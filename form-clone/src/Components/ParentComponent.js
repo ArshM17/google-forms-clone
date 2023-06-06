@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import ChildComponent from "./ChildComponent";
 import ResponsesDisplayComponent from "./Responses";
-import axios from 'axios' ; 
+import axios from "axios";
 
 import { Paper, Tab, Tabs, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
+import "../Styles/EditHead.css";
 
 const styles = makeStyles({
   root: {
@@ -34,11 +35,15 @@ const ParentComponent = () => {
     setValue(newValue);
   };
 
-  const {id} = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     //  fetchData();
-    setFormData({_id:id , title: "", questions: [{ question: "", options: [] }] });
+    setFormData({
+      _id: id,
+      title: "",
+      questions: [{ question: "", options: [] }],
+    });
   }, [value]);
 
   // const fetchData = async () => {
@@ -57,8 +62,8 @@ const ParentComponent = () => {
   const title = useRef();
 
   const handleFormSubmit = (e) => {
-    e.preventDefault() ;
-    
+    e.preventDefault();
+
     // Filter out questions with no question text and blank options
     const filteredQuestions = formData.filter((question) => {
       const hasQuestionText = question.question.trim() !== "";
@@ -68,26 +73,28 @@ const ParentComponent = () => {
       return hasQuestionText && hasOptions;
     });
     const form = {
-      //  _id:id ,  
+      //  _id:id ,
       title: title.current.value,
       questions: filteredQuestions,
-    };  
+    };
 
-    const main ={
-      title:title.current.value ,
-      id:id 
-    } ; 
-    // console.log(form) ; 
+    const main = {
+      title: title.current.value,
+      id: id,
+    };
+    // console.log(form) ;
 
     if (form.title === "") form.title = "Untitled Form";
     // Send filteredQuestions to the backend
     const formURL = `http://localhost:3000/form/response/${id}/${form.title}`;
     alert(`Link to answer : ${formURL}`);
-    axios.post(`http://localhost:5000/questions/${id}/${form.title}/add`,form)
-    .then(res => console.log(res.data)) ;
-    console.log(id) ; 
-    axios.post(`http://localhost:5000/forms/${id}/${main.title}/add`,form)
-    .then(res => console.log(res.data)) ; 
+    axios
+      .post(`http://localhost:5000/questions/${id}/${form.title}/add`, form)
+      .then((res) => console.log(res.data));
+    console.log(id);
+    axios
+      .post(`http://localhost:5000/forms/${id}/${main.title}/add`, form)
+      .then((res) => console.log(res.data));
   };
 
   if (!formData) {
@@ -96,13 +103,24 @@ const ParentComponent = () => {
 
   return formData ? (
     <div>
-      <input
-        type="text"
-        value={formData.title}
-        placeholder="Form Title"
-        ref={title}
-      />
-      <button onClick={handleFormSubmit}>Submit Form</button>
+      {/* <div>
+        <input
+          type="text"
+          value={formData.title}
+          placeholder="Form Title"
+          ref={title}
+        />
+        <button onClick={handleFormSubmit}>Save</button>
+      </div> */}
+      <div class="form-container">
+        <input
+          type="text"
+          value={formData.title}
+          placeholder="Form Title"
+          ref={title}
+        />
+        <button onClick={handleFormSubmit}>Save</button>
+      </div>
 
       <div>
         <Paper className={classes.root}>
