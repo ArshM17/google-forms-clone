@@ -66,6 +66,7 @@ const ParentComponent = () => {
       return hasQuestionText && hasOptions;
     });
     const form = {
+      id: id,
       title: title.current.value,
       questions: filteredQuestions,
     };
@@ -87,7 +88,7 @@ const ParentComponent = () => {
         placeholder="Form Title"
         ref={title}
       />
-      <button onClick={handleFormSubmit}>Submit Form</button>
+      <button onClick={handleFormSubmit}>Save Form</button>
 
       <div>
         <Paper className={classes.root}>

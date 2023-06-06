@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const ResponderComponent = () => {
   const [formTitle, setFormTitle] = useState("");
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState({});
-
+  const { id } = useParams();
   useEffect(() => {
     fetchData();
   }, []);
@@ -30,8 +31,11 @@ const ResponderComponent = () => {
 
   const handleSubmit = () => {
     // Send responses to the backend
-    console.log("Form Title:", formTitle);
-    console.log("Responses:", responses);
+    const response = { id: id, responses: responses };
+    // console.log("Form Title:", formTitle);
+    // console.log("Responses:", responses);
+    console.log(response);
+    alert("Response Recorded");
   };
 
   if (questions.length === 0) {

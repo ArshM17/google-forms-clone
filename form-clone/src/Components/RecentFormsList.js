@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "./Form";
 
 import "../Styles/RecentFormList.css";
@@ -7,58 +7,80 @@ import blankImage from "../Images/blank.png";
 import partyImage from "../Images/party.png";
 
 //get user forms from data base
-const formList = [
-  {
-    img: blankImage,
-    text: "Blank",
-    id: "1",
-  },
-  {
-    img: partyImage,
-    text: "Party Invite",
-    id: "2",
-  },
-  {
-    img: blankImage,
-    text: "Blank",
-    id: "1",
-  },
-  {
-    img: partyImage,
-    text: "Party Invite",
-    id: "2",
-  },
-  {
-    img: blankImage,
-    text: "Blank",
-    id: "1",
-  },
-  {
-    img: partyImage,
-    text: "Party Invite",
-    id: "2",
-  },
-  {
-    img: blankImage,
-    text: "Blank",
-    id: "1",
-  },
-  {
-    img: partyImage,
-    text: "Party Invite",
-    id: "2",
-  },
-];
+// const formList = [
+//   {
+//     img: blankImage,
+//     title: "Blank",
+//     id: "1",
+//   },
+//   {
+//     img: partyImage,
+//     title: "Party Invite",
+//     id: "2",
+//   },
+//   {
+//     img: blankImage,
+//     title: "Blank",
+//     id: "1",
+//   },
+//   {
+//     img: partyImage,
+//     title: "Party Invite",
+//     id: "2",
+//   },
+//   {
+//     img: blankImage,
+//     title: "Blank",
+//     id: "1",
+//   },
+//   {
+//     img: partyImage,
+//     title: "Party Invite",
+//     id: "2",
+//   },
+//   {
+//     img: blankImage,
+//     title: "Blank",
+//     id: "1",
+//   },
+//   {
+//     img: partyImage,
+//     title: "Party Invite",
+//     id: "2",
+//   },
+// ];
 
 function RecentFormsList() {
-  const [forms, setForms] = useState(formList);
+  const [forms, setForms] = useState([]);
 
-  return (
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/forms");
+      const jsonData = await response.json();
+      setForms(jsonData);
+      console.log(jsonData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  return forms ? (
     <div className="form-list">
       {forms.map((form, index) => (
-        <Form key={index} img={form.img} formTitle={form.text} id={form.id} />
+        <Form
+          key={index}
+          img={blankImage}
+          formTitle={form.title}
+          id={form.id}
+        />
       ))}
     </div>
+  ) : (
+    <h6>Loading...</h6>
   );
 }
 
