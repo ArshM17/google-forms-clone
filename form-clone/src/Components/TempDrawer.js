@@ -19,10 +19,10 @@ import { Divider } from "@mui/material";
 import "../Styles/tempDrawer.css";
 
 const data = [
-  { name: "Docs", icon: <ArticleIcon /> },
-  { name: "Sheets", icon: <GridOnIcon /> },
-  { name: "Slides", icon: <SlideshowIcon /> },
-  { name: "Forms", icon: <DescriptionIcon /> },
+  { name: "Docs", icon: <ArticleIcon /> , link:"https://www.google.com/docs/about/"},
+  { name: "Sheets", icon: <GridOnIcon />, link:"https://www.google.com/sheets/about/"},
+  { name: "Slides", icon: <SlideshowIcon /> , link:"https://www.google.com/slides/about/" },
+  { name: "Forms", icon: <DescriptionIcon /> , link:"http://localhost:3000/"},
 ];
 
 const data2 = [
@@ -40,7 +40,7 @@ function TempDrawer({ open, setOpen }) {
       <Divider />
       <br />
       {data.map((item, index) => (
-        <ListItem button key={index} className="item">
+        <ListItem button key={index} className="item" component="a" href={item.link}>
           <ListItemIcon>{item.icon}</ListItemIcon>
           <ListItemText primary={item.name} />
         </ListItem>
@@ -57,7 +57,7 @@ function TempDrawer({ open, setOpen }) {
       <br />
       <Divider />
       <br />
-      <ListItem button>
+      <ListItem button component="a" href="https://www.google.com/intl/en_in/drive/">
         <ListItemIcon>
           <AddToDriveIcon />
         </ListItemIcon>
@@ -65,6 +65,8 @@ function TempDrawer({ open, setOpen }) {
       </ListItem>
       <br />
       <Divider />
+      <br /> 
+      <br /> 
       <div className="drawer-footer">
         <a href="/#">Privacy Policy</a>
         <a href="/#">Terms of Service</a>

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import "../Styles/Response.css"
 
 const ResponsesDisplayComponent = () => {
   const resp = [
@@ -35,21 +36,21 @@ const ResponsesDisplayComponent = () => {
 
 
   return responses && responses.length > 0 ?(
-    <div>
-      if(! {responses}){
+    <div className="res_main">
+      {/* if(! {responses}){
         <h6>You haven't responded ! </h6>
-       }
+       } */}
       <h1>All Responses</h1> 
       {responses.map((item, index) => (
         item ? (
 
-        <div key={index}>
+        <div className="res"  key={item._id}>
           <h3>Response {index + 1}</h3>
 
           {Object.entries(item.response).map(([question, option]) => (
             <div key={question}>
               <p>
-                {question}:{option}
+                 {question}:{option} 
               </p>
             </div>
           ))} 

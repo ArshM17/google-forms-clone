@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import "../Styles/Responder.css"
 const ResponderComponent = () => {
   const [formTitle, setFormTitle] = useState("");
   const [questions, setQuestions] = useState([]);
@@ -56,11 +57,11 @@ const ResponderComponent = () => {
   }
 
   return (
-    <div>
+    <div className="respo">
       <h1>{formTitle}</h1>
 
       {questions.map((question, questionIndex) => (
-        <div key={questionIndex}>
+        <div className="main" key={questionIndex}>
           <h3>{question.question}</h3>
 
           {question.options.map((option, optionIndex) => (
@@ -81,7 +82,7 @@ const ResponderComponent = () => {
         </div>
       ))}
 
-      <button onClick={handleSubmit}>Submit</button>
+      <button className="specific" onClick={handleSubmit}>Submit</button>
     </div>
   );
 };

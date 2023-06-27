@@ -2,11 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import ChildComponent from "./ChildComponent";
 import ResponsesDisplayComponent from "./Responses";
 import axios from 'axios' ; 
-
+import "../Styles/ParentComponent.css"
 import { Paper, Tab, Tabs, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
+
 
 const styles = makeStyles({
   root: {
@@ -95,8 +96,9 @@ const ParentComponent = () => {
   }
 
   return formData ? (
-    <div>
-      <input
+    <div className="title">
+      <input 
+        
         type="text"
         value={formData.title}
         placeholder="Form Title"
