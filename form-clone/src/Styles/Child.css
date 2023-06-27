@@ -1,0 +1,54 @@
+.form-container-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+  }
+
+.question-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    background-color: antiquewhite;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 10px;
+  }
+
+.option-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 5px;
+    margin: 5px;
+  }
+
+input{
+    padding: 5px;
+}
+
+.option-container input[type="radio"] {
+    margin-right: 5px;
+  }
+
+.option-container input[type="text"] {
+    margin-right: 5px;
+    padding: 4px    ;
+  }
+
+.button-container {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+.button-container button {
+    margin-right: 5px;
+    padding: 2px;
+    margin: 5px;
+    margin-bottom: 0;
+  }
+
+.add-q{
+    margin: 5px;
+}

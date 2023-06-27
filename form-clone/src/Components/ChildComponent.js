@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 import "../Styles/ChildComponent.css"
+=======
+import "../Styles/Child.css";
+
+>>>>>>> 79502d538109f88d5ff2239239c19e422b21b07a
 const ChildComponent = ({ formQuestions, setFormData }) => {
   const [questions, setQuestions] = useState(formQuestions);
 
@@ -99,9 +104,15 @@ const ChildComponent = ({ formQuestions, setFormData }) => {
 
     //   <button onClick={handleAddQuestion}>Add Question</button>
     // </div>
+<<<<<<< HEAD
     <div className="component-container">
       {questions.map((question, questionIndex) => (
         <div className="question-container" key={questionIndex}>
+=======
+    <div class="form-container-child">
+      {questions.map((question, questionIndex) => (
+        <div class="question-container" key={questionIndex}>
+>>>>>>> 79502d538109f88d5ff2239239c19e422b21b07a
           <input
             type="text"
             value={question.question}
@@ -110,7 +121,11 @@ const ChildComponent = ({ formQuestions, setFormData }) => {
           />
 
           {question.options.map((option, optionIndex) => (
+<<<<<<< HEAD
             <div className="option-container" key={optionIndex}>
+=======
+            <div class="option-container" key={optionIndex}>
+>>>>>>> 79502d538109f88d5ff2239239c19e422b21b07a
               <input type="radio" />
               <input
                 type="text"
@@ -128,6 +143,7 @@ const ChildComponent = ({ formQuestions, setFormData }) => {
             </div>
           ))}
 
+<<<<<<< HEAD
           <button  className="btn_add"  onClick={() => handleAddOption(questionIndex)}>
             Add Option
           </button>
@@ -139,6 +155,23 @@ const ChildComponent = ({ formQuestions, setFormData }) => {
       ))}
 
       <button  className="btn_add" onClick={handleAddQuestion}>Add Question</button>
+=======
+          <div class="button-container">
+            <button onClick={() => handleAddOption(questionIndex)}>
+              Add Option
+            </button>
+
+            <button onClick={() => handleRemoveQuestion(questionIndex)}>
+              Remove Question
+            </button>
+          </div>
+        </div>
+      ))}
+
+      <button className="add-q" onClick={handleAddQuestion}>
+        Add Question
+      </button>
+>>>>>>> 79502d538109f88d5ff2239239c19e422b21b07a
     </div>
   );
 };
